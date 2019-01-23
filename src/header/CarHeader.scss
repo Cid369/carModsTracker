@@ -1,0 +1,22 @@
+$charcoal: #bbb;
+
+.car-header {
+  align-items: center;
+  border-bottom: 2px solid $charcoal;
+  display: flex;
+  height: 200px;
+  padding: 0 40px;
+
+  a,
+  span {
+    font-size: 1.2em;
+    margin: 0 30px;
+  }
+}
+
+.car-header > nav {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
