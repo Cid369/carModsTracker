@@ -25,5 +25,4 @@ const CarHeader = ({ cars }) => (
   </header>
 )
 
-
 export default CarHeader
