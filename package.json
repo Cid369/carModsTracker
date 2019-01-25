@@ -57,6 +57,12 @@
     "nag": "eslint .",
     "deploy": "sh scripts/deploy.sh"
   },
+  "scripts": {
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
+  "start": "react-scripts start",
+  "build": "react-scripts build"
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
