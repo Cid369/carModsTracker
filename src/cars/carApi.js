@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:4741'
+import apiUrl from '../apiConfig'
 
 export const handleErrors = res => {
   if (res.ok) {
@@ -8,25 +8,26 @@ export const handleErrors = res => {
   }
 }
 
-export const carCreate = (inputData) => {
-  return fetch(apiUrl + '/cars', {
+export const carCreate = (inputData, user) => {
+  return fetch(apiUrl + '/create', {
     method: 'POST',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      contentType: 'application/json',
+      Authorization: `Token token=${user.token}`
     },
-    contentType: 'application/json',
     data: JSON.stringify(inputData)
   })
 }
 
-export const getCar = (inputData) => {
+export const getCar = (user) => {
+  console.log(user)
   return fetch(apiUrl + '/cars', {
     method: 'GET',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${user.token}`
     },
     contentType: 'application/json',
-    data: JSON.stringify(inputData)
+    data: JSON.stringify()
   })
 }
 
@@ -34,16 +35,16 @@ export const deleteCar = (id) => {
   return fetch(apiUrl + `/cars/${id}`, {
     method: 'DELETE',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${user.token}`
     }
   })
 }
 
 export const updateCar = (inputData, id) => {
-  return fetch(apiUrl + `/characters/${id}`, {
+  return fetch(apiUrl + `/cars/${id}`, {
     method: 'PATCH',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${user.token}`
     },
     contentType: 'application/json',
     data: JSON.stringify(inputData)

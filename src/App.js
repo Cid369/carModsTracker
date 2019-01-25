@@ -13,7 +13,8 @@ import Car from './cars/Car'
 import Cars from './cars/Cars'
 import CarCreate from './cars/CarCreate'
 import CarEdit from './cars/CarEdit'
-import Layout from './Layout'
+// import Layout from './Layout'
+import CarForm from './CarForm'
 
 
 class App extends Component {
@@ -47,7 +48,7 @@ class App extends Component {
 
   render () {
     const { flashMessage, flashType, user, car } = this.state
-
+    console.log('my user is cool', user)
     return (
       <React.Fragment>
         <Header user={user} />
@@ -67,14 +68,17 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
 
-          <Route path='/cars' render={() => (
-            <Cars flash={this.flash} setCar={this.setCar} />
+          <Route exact path='/cars' render={() => (
+            <Cars flash={this.flash} user={user} />
           )} />
-          <Route path='/car' render={() => (
-            <Car flash={this.flash} setCar={this.setCar} />
+          <Route exact path='/car' render={() => (
+            <Car flash={this.flash} user={this.user} />
           )} />
-          <AuthenticatedRoute car={car} path='/carEdit' render={() => (
-            <CarEdit flash={this.flash} car={car} />
+          <AuthenticatedRoute exact user={user} path='/create' render={() => (
+            <CarCreate flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute exact user={user} path='/carEdit' render={() => (
+            <CarEdit flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>

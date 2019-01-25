@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import { Redirect } from 'react-router-dom'
 
-import { carCreate } from './CarCreate'
+// import { carCreate } from './carApi'
 import apiUrl from '../apiConfig'
-import CarForm from './CarForm'
+import CarForm from '../CarForm'
 import messages from './carMessages'
+
 
 class CarCreate extends Component {
   constructor (props) {
     super(props)
-
+    console.log('omg is props!',props)
     this.state = {
       id: null,
+      // user: user,
       car: {
         year: '',
         make: '',
@@ -22,20 +24,23 @@ class CarCreate extends Component {
   }
 
 handleChange = event => {
-  const editedCar = {
+  const createdCar = {
     ...this.state.car, [event.target.name]:
     event.target.value
   }
-  this.setState({ car: editedCar })
+  this.setState({ car: createdCar })
 }
 
 handleSubmit = event => {
   event.preventDefault()
 
+  console.log(this.state.user)
+  // debugger
   const options = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      contentType: 'application/json',
+      Authorization: `Token token=${this.props.user.token}`
     },
     body: JSON.stringify({
       car: this.state.car

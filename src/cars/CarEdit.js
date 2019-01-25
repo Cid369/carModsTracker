@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import { carEdit } from './carApi'
 import apiUrl from '../apiConfig'
-import CarForm from './CarForm'
+import CarForm from '../CarForm'
 import messages from './carMessages'
 
 class CarEdit extends Component {

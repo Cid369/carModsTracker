@@ -7,7 +7,7 @@ const CarForm = ({ handleChange, handleSubmit, car }) => (
       name="year"
       placeholder="Year"
       value={car.year}
-      type="year"
+      type="number"
       onChange={handleChange}
     />
 

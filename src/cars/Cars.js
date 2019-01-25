@@ -15,7 +15,8 @@ class Cars extends Component {
   }
 
   componentDidMount() {
-    fetch(`${apiUrl}/cars`)
+    // console.log(this.props.user)
+    getCar(this.props.user)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ cars: data.cars }))
@@ -29,7 +30,7 @@ class Cars extends Component {
     const cars = this.state.cars.map(car => (
       <li key={car.id}>
         <Link
-          to={`/cars/${car.id}`}>{car.year}</Link>
+          to={`/cars/${car.id}`}>{car.model}</Link>
       </li>
     ))
     return (
@@ -43,6 +44,7 @@ class Cars extends Component {
     )
   }
 }
+
 
 
 export default Cars
